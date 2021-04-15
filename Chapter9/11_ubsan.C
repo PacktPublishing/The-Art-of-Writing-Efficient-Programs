@@ -7,6 +7,6 @@ int main() {
     cout << INT_MAX << ": ";
     int k;
     cin >> k;
-    if (k > INT_MAX-5) cout << "Large k" << endl;
-    if (k + 10 < INT_MAX) cout << "Small k" << endl;
+    bool large = k + 10 < INT_MAX;
+    cout << "Large k? " << large << endl;
 }
