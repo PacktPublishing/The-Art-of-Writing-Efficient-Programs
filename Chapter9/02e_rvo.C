@@ -10,4 +10,10 @@ class C {
     ~C() { cout << "~C() @" << this << endl; }
     friend ostream& operator<<(ostream& out, const C& c) { out << c.i_; return out; }
 };
-C makeC(int i) { C ctmp(i); return ctmp; }
+
+C makeC(int i) { C ctmp(i); return std::move(ctmp); }
+
+int main() {
+    C c = makeC(42);
+    cout << c << endl;
+}

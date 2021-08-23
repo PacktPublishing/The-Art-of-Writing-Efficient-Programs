@@ -1,3 +1,4 @@
+#include <memory>
 #include <iostream>
 using namespace std;
 
@@ -10,4 +11,10 @@ class C {
     ~C() { cout << "~C() @" << this << endl; }
     friend ostream& operator<<(ostream& out, const C& c) { out << c.i_; return out; }
 };
-C makeC(int i) { C ctmp(i); return ctmp; }
+
+std::unique_ptr<C> makeC(int i) { return make_unique<C>(i); }
+
+int main() {
+    auto c = makeC(42);
+    cout << *c << endl;
+}
