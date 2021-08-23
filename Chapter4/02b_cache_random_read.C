@@ -50,12 +50,6 @@ void BM_read_rand(benchmark::State& state) {
 }
 
 
-#define ARGS \
-    ->RangeMultiplier(2)->Range(1<<10, 1<<30)
-
-//BENCHMARK_TEMPLATE1(BM_read_rand, unsigned int) ARGS;
-//BENCHMARK_TEMPLATE1(BM_read_rand, unsigned long) ARGS;
-//BENCHMARK_TEMPLATE1(BM_read_rand, __m128i) ARGS;
-BENCHMARK_TEMPLATE1(BM_read_rand, __m256i) ARGS;
+BENCHMARK_TEMPLATE1(BM_read_rand, unsigned long)->Arg(1<<30);
 
 BENCHMARK_MAIN();
