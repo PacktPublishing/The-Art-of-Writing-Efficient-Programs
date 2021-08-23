@@ -1,14 +1,17 @@
 #include <unistd.h>
 #include <atomic>
+#include <mutex>
 
 #include "benchmark/benchmark.h"
 
-std::atomic<unsigned long>* p(new std::atomic<unsigned long>);
+unsigned long x = 0;
+std::mutex M;
 
 void BM_lock(benchmark::State& state) {
-  if (state.thread_index == 0) *p = 0;
+  if (state.thread_index == 0) x = 0;
   for (auto _ : state) {
-    benchmark::DoNotOptimize(p->fetch_add(1, std::memory_order_relaxed));
+    std::lock_guard<std::mutex> L(M);
+    benchmark::DoNotOptimize(++x);
   }
   state.SetItemsProcessed(state.iterations());
 }
