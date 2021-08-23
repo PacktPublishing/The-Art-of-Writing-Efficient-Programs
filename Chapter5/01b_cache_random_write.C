@@ -1,8 +1,11 @@
 #include <cstddef>
 #include <cstdlib>
 #include <string.h>
+#include <unistd.h>
+#ifdef __x86_64__
 #include <emmintrin.h>
 #include <immintrin.h>
+#endif // __x86_64__ 
 #include <vector>
 #include <algorithm>
 
@@ -16,15 +19,15 @@
 #define REPEAT(x) REPEAT32(x)
 
 template <class Word>
-void BM_read_rand(benchmark::State& state) {
+void BM_write_rand(benchmark::State& state) {
     void* memory;
     const size_t size = state.range(0);
     if (::posix_memalign(&memory, 64, size) != 0) abort();
     void* const end = static_cast<char*>(memory) + size;
     volatile Word* const p0 = static_cast<Word*>(memory);
     Word* const p1 = static_cast<Word*>(end);
-    Word sink1; ::memset(&sink1, 0xab, sizeof(sink1));
-    Word sink = sink1;
+    Word fill1; ::memset(&fill1, 0xab, sizeof(fill1));
+    Word fill = {}; //fill1;
 
     const size_t N = size/sizeof(Word);
     std::vector<int> v_index(N); 
@@ -35,12 +38,11 @@ void BM_read_rand(benchmark::State& state) {
 
     for (auto _ : state) {
         for (const int* ind = index; ind < i1; ) {
-            //REPEAT(benchmark::DoNotOptimize(sink = *(p0 + *ind++));)
-            REPEAT(benchmark::DoNotOptimize(*(p0 + *ind++));)
+            REPEAT(*(p0 + *ind++) = fill;)
         }
         benchmark::ClobberMemory();
     }
-    benchmark::DoNotOptimize(sink);
+    benchmark::DoNotOptimize(fill);
     ::free(memory);
     state.SetBytesProcessed(size*state.iterations());
     state.SetItemsProcessed((p1 - p0)*state.iterations());
@@ -49,13 +51,18 @@ void BM_read_rand(benchmark::State& state) {
     state.SetLabel(buf);
 }
 
+static const long numcpu = sysconf(_SC_NPROCESSORS_CONF);
 
 #define ARGS \
-    ->RangeMultiplier(2)->Range(1<<10, 1<<30)
+  ->RangeMultiplier(2)->Range(1<<28, 1<<30) \
+  ->ThreadRange(1, numcpu) \
+  ->UseRealTime()
 
-//BENCHMARK_TEMPLATE1(BM_read_rand, unsigned int) ARGS;
-//BENCHMARK_TEMPLATE1(BM_read_rand, unsigned long) ARGS;
-//BENCHMARK_TEMPLATE1(BM_read_rand, __m128i) ARGS;
-BENCHMARK_TEMPLATE1(BM_read_rand, __m256i) ARGS;
+//BENCHMARK_TEMPLATE1(BM_write_rand, unsigned int) ARGS;
+BENCHMARK_TEMPLATE1(BM_write_rand, unsigned long) ARGS;
+#ifdef __x86_64__
+//BENCHMARK_TEMPLATE1(BM_write_rand, __m128i) ARGS;
+//BENCHMARK_TEMPLATE1(BM_write_rand, __m256i) ARGS;
+#endif // __x86_64__ 
 
 BENCHMARK_MAIN();

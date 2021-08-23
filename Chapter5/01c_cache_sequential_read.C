@@ -16,9 +16,10 @@
 #define REPEAT(x) REPEAT32(x)
 
 template <class Word>
-void BM_read_rand(benchmark::State& state) {
+void BM_read_seq(benchmark::State& state) {
     void* memory;
     const size_t size = state.range(0);
+    if (size/sizeof(Word) < 32) abort();
     if (::posix_memalign(&memory, 64, size) != 0) abort();
     void* const end = static_cast<char*>(memory) + size;
     volatile Word* const p0 = static_cast<Word*>(memory);
@@ -26,17 +27,10 @@ void BM_read_rand(benchmark::State& state) {
     Word sink1; ::memset(&sink1, 0xab, sizeof(sink1));
     Word sink = sink1;
 
-    const size_t N = size/sizeof(Word);
-    std::vector<int> v_index(N); 
-    for (size_t i = 0; i < N; ++i) v_index[i] = i;
-    std::random_shuffle(v_index.begin(), v_index.end());
-    int* const index = v_index.data();
-    int* const i1 = index + N;
-
     for (auto _ : state) {
-        for (const int* ind = index; ind < i1; ) {
-            //REPEAT(benchmark::DoNotOptimize(sink = *(p0 + *ind++));)
-            REPEAT(benchmark::DoNotOptimize(*(p0 + *ind++));)
+        for (volatile Word* p = p0; p != p1; ) {
+            REPEAT(benchmark::DoNotOptimize(*p++);) // XXX no sink?
+            //REPEAT(benchmark::DoNotOptimize(sink = *p++);) // XXX no sink?
         }
         benchmark::ClobberMemory();
     }
@@ -53,9 +47,9 @@ void BM_read_rand(benchmark::State& state) {
 #define ARGS \
     ->RangeMultiplier(2)->Range(1<<10, 1<<30)
 
-//BENCHMARK_TEMPLATE1(BM_read_rand, unsigned int) ARGS;
-//BENCHMARK_TEMPLATE1(BM_read_rand, unsigned long) ARGS;
-//BENCHMARK_TEMPLATE1(BM_read_rand, __m128i) ARGS;
-BENCHMARK_TEMPLATE1(BM_read_rand, __m256i) ARGS;
+//BENCHMARK_TEMPLATE1(BM_read_seq, unsigned int) ARGS;
+//BENCHMARK_TEMPLATE1(BM_read_seq, unsigned long) ARGS;
+//BENCHMARK_TEMPLATE1(BM_read_seq, __m128i) ARGS;
+BENCHMARK_TEMPLATE1(BM_read_seq, __m256i) ARGS;
 
 BENCHMARK_MAIN();
