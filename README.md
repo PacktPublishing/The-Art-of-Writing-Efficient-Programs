@@ -47,6 +47,10 @@ With the following software and hardware list you can run all code files present
 
 We also provide a PDF file that has color images of the screenshots/diagrams used in this book. [Click here to download it](https://static.packt-cdn.com/downloads/9781800208117_ColorImages.pdf).
 
+### Errata
+
+* Page 25: The sentence "for example, if the actual string is generated from a simulation that takes ten hours, the one hundred _seconds_ it takes to sort it is hardly worth noticing." must be read as "for example, if the actual string is generated from a simulation that takes ten hours, the one hundred _milliseconds_ it takes to sort it is hardly worth noticing."
+
 ### Related products
 * C++ High Performance - Second Edition [[Packt]](https://www.packtpub.com/product/c-high-performance-second-edition/9781839216541?utm_source=github&utm_medium=repository&utm_campaign=9781839216541) [[Amazon]](https://www.amazon.com/dp/1839216549)
 
