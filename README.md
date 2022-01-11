@@ -50,6 +50,7 @@ We also provide a PDF file that has color images of the screenshots/diagrams use
 ### Errata
 
 * Page 25: The sentence "for example, if the actual string is generated from a simulation that takes ten hours, the one hundred _seconds_ it takes to sort it is hardly worth noticing." must be read as "for example, if the actual string is generated from a simulation that takes ten hours, the one hundred _milliseconds_ it takes to sort it is hardly worth noticing."
+* Page 45: The file name for the first code snippet must be read as 01a_compare_timer.C and the second code snippet must be read as 01a_compare_timer_a.C/01a_compare_timer_b.C.
 
 ### Related products
 * C++ High Performance - Second Edition [[Packt]](https://www.packtpub.com/product/c-high-performance-second-edition/9781839216541?utm_source=github&utm_medium=repository&utm_campaign=9781839216541) [[Amazon]](https://www.amazon.com/dp/1839216549)
