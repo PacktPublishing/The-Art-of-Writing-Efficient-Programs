@@ -17,7 +17,7 @@
             s[i] = 'a' + (rgen() % ('z' - 'a' + 1));
         }
         else {    // Option C
-            ::memset(s.get(), 'a', N*sizeof(char));
+            ::memset(s.get(), 'a', L*sizeof(char));
             for (unsigned int i = 0; i < L/1024; ++i) {
                 s[rgen() % (L - 1)] = 'a' + (rgen() % ('z' - 'a' + 1));
             }
