@@ -61,3 +61,7 @@ We also provide a PDF file that has color images of the screenshots/diagrams use
 ## Get to Know the Author
 **Fedor G. Pikus**
 is a chief engineering scientist in the Mentor IC Segment of Siemens Digital Industries Software and is responsible for the long-term technical direction of Calibre products, the design and architecture of software, and research into new software technologies. His previous roles included senior software engineer at Google and chief software architect at Mentor Graphics. Fedor is a recognized expert in high-performance computing and C++. He has presented his works at CPPCon, SD West, DesignCon, and in software development journals, and is also an O'Reilly author. Fedor has over 25 patents and over 100 papers and conference presentations on physics, EDA, software design, and C++.
+### Download a free PDF
+
+ <i>If you have already purchased a print or Kindle version of this book, you can get a DRM-free PDF version at no cost.<br>Simply click on the link to claim your free PDF.</i>
+<p align="center"> <a href="https://packt.link/free-ebook/9781800208117">https://packt.link/free-ebook/9781800208117 </a> </p>
