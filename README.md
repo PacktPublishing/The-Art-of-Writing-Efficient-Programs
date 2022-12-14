@@ -1,3 +1,15 @@
+
+### Get this product for $5
+
+<i>Packt is having its biggest sale of the year. Get this eBook or any other book, video, or course that you like just for $5 each</i>
+
+
+<b><p align='center'>[Buy now](https://packt.link/9781800208117)</p></b>
+
+
+<b><p align='center'>[Buy similar titles for just $5](https://subscription.packtpub.com/search)</p></b>
+
+
 # The Art of Writing Efficient Programs
 
 <a href="https://www.packtpub.com/product/the-art-of-writing-efficient-programs/9781800208117?utm_source=github&utm_medium=repository&utm_campaign=9781800208117"><img src="https://static.packt-cdn.com/products/9781800208117/cover/smaller" alt="The Art of Writing Efficient Programs" height="256px" align="right"></a>
