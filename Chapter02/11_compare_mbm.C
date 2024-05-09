@@ -1,4 +1,6 @@
 // Microbenchmarks for string comparison using Google benchmark
+// Build as follows:
+// $CXX 11_compare_mbm.C 11_compare_mbm_a.C 11_compare_mbm_b.C 11_compare_mbm_c.C -I$GBENCH_DIR/include -g -O3 -I. --std=c++17 $GBENCH_DIR/lib/libbenchmark.a -lpthread -latomic -lrt -lm -o 01a_substring_sort
 #include <cstdlib>
 #include <cstring>
 #include <memory>

@@ -1,4 +1,6 @@
 // 01 optimized to omit unnecessary bount check in compare()
+// Build as follows:
+// $CXX 03_substring_sort.C 03_substring_sort_a.C -I$GBENCH_DIR/include -g -O3 -I. --std=c++17 $GBENCH_DIR/lib/libbenchmark.a -lpthread -latomic -lrt -lm -o 01_substring_sort
 #include <algorithm>
 #include <chrono>
 #include <cstdlib>
