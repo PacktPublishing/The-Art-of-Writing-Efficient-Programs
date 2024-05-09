@@ -1,6 +1,6 @@
 // 01 with two call sources to compare()
 // Build as follows:
-// $CXX 01a_substring_sort.C 01a_substring_sort_a.C 01a_substring_sort_b.C 01a_substring_sort_c.C -I$GBENCH_DIR/include -g -O3 -I. --std=c++17 $GBENCH_DIR/lib/libbenchmark.a -lpthread -latomic -lrt -lm -o 01a_substring_sort
+// $CXX 01a_substring_sort.C 01a_substring_sort_a.C 01a_substring_sort_b.C 01a_substring_sort_c.C -g -O3 -I. --std=c++17 -o 01a_substring_sort
 #include <algorithm>
 #include <chrono>
 #include <cstdlib>

@@ -1,6 +1,6 @@
 // Substring sort
 // Build as follows:
-// $CXX 01_substring_sort.C 01_substring_sort_a.C -I$GBENCH_DIR/include -g -O3 -I. --std=c++17 $GBENCH_DIR/lib/libbenchmark.a -lpthread -latomic -lrt -lm -o 01_substring_sort
+// $CXX 01_substring_sort.C 01_substring_sort_a.C -g -O3 -I. --std=c++17 -o 01_substring_sort
 #include <algorithm>
 #include <chrono>
 #include <cstdlib>
