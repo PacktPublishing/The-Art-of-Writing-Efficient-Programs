@@ -1,10 +1,12 @@
-Building instructions:
+## Building instructions:
 For .C files that have a comment like the following
 
+```
 // Build as follows:
 // $CXX 01_substring_sort.C 01_substring_sort_a.C -I$GBENCH_DIR/include -g -O3 -I. --std=c++17 $GBENCH_DIR/lib/libbenchmark.a -lpthread -latomic -lrt -lm -o 01_substring_sort
+```
 
-build using these direction (feel free to add more warning and other flags). Do
+Build using these direction (feel free to add more warning and other flags). Do
 not try to build individual files like 01_substring_sort_a.C, they won't link by
 themselves. If the file has no such comment, then the file compiles and links
 standalone. 
