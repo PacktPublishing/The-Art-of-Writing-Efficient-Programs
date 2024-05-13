@@ -40,7 +40,7 @@ std::for_each(v.begin(), v.end(),[](double& x){ ++x; });
 This book is for experienced developers and programmers who work on performance-critical projects and want to learn different techniques to improve the performance of their code. Programmers who belong to algorithmic trading, gaming, bioinformatics, computational genomics, or computational fluid dynamics communities can learn various techniques from this book and apply them in their domain of work.
 Although this book uses the C++ language, the concepts demonstrated in the book can be easily transferred or applied to other compiled languages such as C, Java, Rust, Go, and more.
 
-With the following software and hardware list you can run all code files present in the book (Chapter 1-12).
+With the following software and hardware list you can run all code files present in the book (Chapter 1-12). For more instructions on how to run the code, click [here](https://github.com/PacktPublishing/The-Art-of-Writing-Efficient-Programs/tree/master/Chapter02#readme).
 ### Software and Hardware List
 | Chapter | Software required | OS required |
 | -------- | ------------------------------------ | ----------------------------------- |
